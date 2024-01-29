@@ -1,5 +1,8 @@
 // 'use client'
 
+
+
+
 //https://http.cat/[status_code]
 // Error components must be Client Components
  
