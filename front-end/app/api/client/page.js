@@ -1,65 +1,49 @@
-"use client"
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
 
-export default function ClientPage(){
-    const [ name, setName ] = useState( '' );
-    const [ fridge, setFridge ] = useState( '' );
-    const [ tastingNotes, setTastingNotes ] = useState( '' );
-    const [ abv, setAbv ] = useState( '' );
-    const [ setting, setSetting ] = useState( '' );
-    const [ readingMaterial, setReadingMaterial ] = useState( '' );
-    const [ sockColor, setSockColor ] = useState( '' );
-    const [ listNumber, setListNumber ] = useState( '' );
-    const [ favorite, setFavorite ] = useState( '' );
-    const [ username, setUsername ] = useState( '' );
+export default function FormPage ()
+{
+    const [ formData, setFormData ] = useState( {
+        name: '',
+        email: '',
+        // add other fields here...
+    } );
 
-    //manage error message 
-    const [ errorMessage, setErrorMessage ] = useState( '' );
-
-    //manage redirection
-    const router = useRouter();
-
-    const handleSubmit = async ( event ) =>
+    const handleChange = ( e ) =>
     {
-        event.preventDefault();
+        setFormData( {
+            ...formData,
+            [ e.target.name ]: e.target.value,
+        } );
+    };
 
-        const data = {
-            name: event.target.name.value,
-            : event.target.name.value,
-            : event.target.tastingNotes.value,
-            : event.target.abv.value,
-            : event.target.setting.value,
-            : event.target.readingMaterial.value,
-            : event.target.sockColor.value,
-            : event.target.listNumber.value,
-            : false,
-            : usernameCookie,
-        }
+    const handleSubmit = async ( e ) =>
+    {
+        e.preventDefault();
 
-        console.log( data );
-    
-        try
-        {
-            const response = await fetch( webUrl + "/api/client", {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify( data ),
-            } );
+        // Send a POST request to the server
+        const response = await fetch( '/api/form', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify( formData ),
+        } );
 
-            //check for a 4 or 500 response code
-            if ( !response.ok )
-            {
-                throw new Error( `Sick Eva font error` );
-            }
+        // Handle response...
+    };
 
-            if ( response.ok )
-            {
-                console.log( response.body );
-                router.push( '/api/server' );
-            }
-
-        }
-    }}
+    return (
+        <form onSubmit={ handleSubmit }>
+            <label>
+                Name:
+                <input type="text" name="name" value={ formData.name } onChange={ handleChange } />
+            </label>
+            <label>
+                Email:
+                <input type="email" name="email" value={ formData.email } onChange={ handleChange } />
+            </label>
+            {/* Add other fields here... */ }
+            <button type="submit">Submit</button>
+        </form>
+    );
+}
