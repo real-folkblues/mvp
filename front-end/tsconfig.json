@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/api/lib/data.jsx", "app/api/components/Server.jsx", "app/api/components/Client.jsx", "app/api/blogs/error.js", "app/api/blogs/layout.js", "app/api/blogs/route.js", "app/api/client/page.js", "app/global-error.jsx", "app/layout.jsx", "app/page.jsx", "app/api/server/page.jsx"],
   "exclude": ["node_modules"]
 }

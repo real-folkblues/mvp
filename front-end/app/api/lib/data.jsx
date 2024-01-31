@@ -5,3 +5,6 @@
 //     date: Date;
 // }
 // let posts: Post[] = [];
+{
+    "name": "John Doe"
+}
