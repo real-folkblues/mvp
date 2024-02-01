@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 
 export default function FormPage ()
 {
@@ -21,6 +22,14 @@ export default function FormPage ()
     const handleSubmit = async ( e ) =>
     {
         e.preventDefault();
+
+        if ( !e.currentTarget.checkValidity() )
+        {
+            // Form is not valid, redirect to error page
+            const router = useRouter();
+            router.push( '/NERV/error/' );
+            return;
+        }
 
         // Send a POST request to the server
         const response = await fetch( '/api/form', {
