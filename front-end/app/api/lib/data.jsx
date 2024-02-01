@@ -5,6 +5,6 @@
 //     date: Date;
 // }
 // let posts: Post[] = [];
-{
-    "name": "John Doe"
-}
+// {
+//     "name"; "John Doe"
+// }
