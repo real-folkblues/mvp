@@ -44,7 +44,25 @@ export default function FormPage ()
                 Email:
                 <input type="email" name="email" value={ formData.email } onChange={ handleChange } />
             </label>
-            {/* Add other fields here... */ }
+            <fieldset>
+                <legend>HMS Terror</legend>
+                <label>
+                    <input type="radio" name="option" value="option1" checked={ formData.option === 'option1' } onChange={ handleChange } />
+                    Option 1
+                </label>
+                <label>
+                    <input type="radio" name="option" value="option2" checked={ formData.option === 'option2' } onChange={ handleChange } />
+                    Option 2
+                </label>
+            </fieldset>
+            <label>
+                <input type="checkbox" name="checkbox" checked={ formData.checkbox } onChange={ handleChange } />
+                Check me
+            </label>
+            <label>
+                Message:
+                <textarea name="message" value={ formData.message } onChange={ handleChange } />
+            </label>
             <button type="submit">Submit</button>
         </form>
     );
