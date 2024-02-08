@@ -1,10 +1,9 @@
-"use client"
+// "use client"
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navitaion';
 
-export default function FormPage ()
-{
+const FormPage = (props) =>
     const [ formData, setFormData ] = useState( {
         name: '',
         email: '',
