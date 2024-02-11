@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Button from './api/components/Button/button.jsx';
+import Button from './components/Button/button.jsx';
 import Link from 'next/link';
 
 
@@ -14,7 +14,7 @@ export default function Page() {
   return (
     <div>
       <h1>Welcome to the Liftoff Project Demo!</h1>
-      <Link href="/api/client/">
+      <Link href="/client/">
       <Button onClick={handleClick}>Take me to form</Button>
   </Link>
 
