@@ -1,6 +1,6 @@
 
-export async function ApiFetch() {
-  const res = await fetch('http://localhost:8888');
+export async function fetchData() {
+  const res = await fetch('http://localhost:8888/kanjis');
   const data = await res.json();
-  return  { props: { data } };
+  return  data;
 }
