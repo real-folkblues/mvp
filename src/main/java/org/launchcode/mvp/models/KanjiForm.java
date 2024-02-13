@@ -14,16 +14,16 @@ public class KanjiForm extends AbstractEntity{
     @NotNull
     private String kanji;
 
-    @NotNull
-    private String vocab;
+//    @NotNull
+//    private String vocab;
+//
+//    @NotNull
+//    private String particles;
 
-    @NotNull
-    private String particles;
-
-    public KanjiForm(String kanji,String vocab, String particles){
+    public KanjiForm(String kanji){
     this.kanji = kanji;
-    this.vocab = vocab;
-    this.particles = vocab;
+//    this.vocab = vocab;
+//    this.particles = vocab;
     }
 
     public String getKanji() {
@@ -34,19 +34,19 @@ public class KanjiForm extends AbstractEntity{
         this.kanji = kanji;
     }
 
-    public String getVocab() {
-        return vocab;
-    }
-
-    public void setVocab(String vocab) {
-        this.vocab = vocab;
-    }
-
-    public String getParticles() {
-        return particles;
-    }
-
-    public void setParticles(String particles) {
-        this.particles = particles;
-    }
+//    public String getVocab() {
+//        return vocab;
+//    }
+//
+//    public void setVocab(String vocab) {
+//        this.vocab = vocab;
+//    }
+//
+//    public String getParticles() {
+//        return particles;
+//    }
+//
+//    public void setParticles(String particles) {
+//        this.particles = particles;
+//    }
 }
