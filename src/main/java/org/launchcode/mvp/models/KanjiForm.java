@@ -1,29 +1,35 @@
 package org.launchcode.mvp.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.*;
 
 @Entity
 public class KanjiForm extends AbstractEntity{
 
-    @ManyToOne
-    @JoinColumn()
-
-    @NotNull
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String kanji;
-
-//    @NotNull
 //    private String vocab;
-//
-//    @NotNull
 //    private String particles;
 
-    public KanjiForm(String kanji){
-    this.kanji = kanji;
+
+    public KanjiForm() {
+    }
+
+    public KanjiForm(Long id,String kanji){
+        this.id = id;
+        this.kanji = kanji;
 //    this.vocab = vocab;
 //    this.particles = vocab;
+    }
+
+    @Override
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getKanji() {

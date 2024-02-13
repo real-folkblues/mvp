@@ -10,11 +10,11 @@ import java.util.Objects;
 @MappedSuperclass
 public abstract class AbstractEntity {
 
-   /* @Id
+   @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -30,5 +30,5 @@ public abstract class AbstractEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id);
-    }*/
+    }
 }

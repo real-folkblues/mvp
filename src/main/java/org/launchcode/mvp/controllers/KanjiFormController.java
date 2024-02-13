@@ -2,12 +2,16 @@ package org.launchcode.mvp.controllers;
 
 import jakarta.servlet.http.HttpSession;
 import org.launchcode.mvp.data.KanjiFormRepository;
-import org.launchcode.mvp.models.KanjiForm;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 
+
+import org.launchcode.mvp.models.KanjiForm;
+import org.launchcode.mvp.models.dto.KanjiDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,19 +28,7 @@ public class KanjiFormController {
     private KanjiFormRepository kanjiFormRepository;
 
 
-    @RequestMapping
-    public class kanjiForm {
 
-    private int kanjiFormID;
-    private String kanjiFormType; (all variables/fields/methods tbd)
-    private String kanjiFormName;
-    private ArrayList<String> setNewKanjiForm = new ArrayList<>();
-
-    public kanjiForm(int kanjiFormID, String kanjiFormType, String kanjiFormName){
-        this.kanjiFormType = kanjiFormType;
-        this.kanjiFormName = kanjiFormName;
-
-    }
 
 
 
@@ -46,11 +38,11 @@ public class KanjiFormController {
         kanjiForm = new KanjiForm(KanjiDTO.getKanji());
 
         //looking up kanji in the db
-        KanjiForm kanjiForm = new kanjiFormRepository (KanjiDTO.getKanji(), KanjiDTO.getPassword());
+        kanjiForm = new kanjiFormRepository(KanjiDTO.getKanji(), KanjiDTO.getKanji());
 
         System.out.println(kanjiDTO.getKanjiForm);
 
-        if (kanjiForm == null || !kanjiForm.isMatchingKanji()) {
+        if (!kanjiForm.isMatchingKanji()) {
             errors.rejectValue(
                     "kanji",
                     "invalid",
@@ -65,21 +57,18 @@ public class KanjiFormController {
 
 
         HttpHeaders headers = new HttpHeaders();
-//            headers.add("Set-Cookie", "JSESSIONID=" + session.getId());
-        //headers.add("Set-Cookie", "username=" + session.getAttribute(theUser.getUsername()));
-        //"; HttpOnly; SameSite=None; Secure
-        headers.add("User-ID", kanjiForm.getKanji());
+        headers.add("Kanji-ID", kanjiForm.getKanji());
 
 
         return new ResponseEntity<>(kanjiForm, HttpStatus.OK);
     }
-//
+
     }
 
-    @GetMapping("/getKanjiForms")
-    public ResponseEntity<?> getKanjiFormObjects() {
-        return new ResponseEntity<>(kanjiFormRepository.findAll(), HttpStatus.OK);
-    }
+//    @GetMapping("/getKanjiForm")
+//    public ResponseEntity<?> getKanjiFormObjects() {
+//
+//    }
 
     @CrossOrigin
     @DeleteMapping("/removeKanjiForm/{id}")
@@ -94,14 +83,14 @@ public class KanjiFormController {
     }
 
     @PutMapping("/updateKanjiForm/{id}")
-    public ResponseEntity<?> updateKanjiForm(@PathVariable int id, @RequestBody KanjiFormDTO kanjiFormDTO){
+    public ResponseEntity<?> updateKanjiForm(@PathVariable int id, @RequestBody KanjiDTO KanjiDTO){
 
         Optional<kanjiForm> updateKanjiForm = KanjiFormRepository.findById(id);
 
         if (updateKanjiForm.isPresent()) {
-            updateKanjiForm.get().setName(kanjiFormDTO.getKanji());
-            updateKanjiForm.get().setAbv(kanjiFormDTO.getVocab());
-            updateKanjiForm.get().setTastingNotes(kanjiFormDTO.getParticles());
+            updateKanjiForm.get().setKanji(KanjiDTO.getKanji());
+//            updateKanjiForm.get().setVocab(KanjiDTO.getVocab());
+//            updateKanjiForm.get().setParticles(KanjiDTO.getParticles());
             KanjiFormRepository.save(updateKanjiForm.get());
         }
 
