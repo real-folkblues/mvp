@@ -1,0 +1,13 @@
+{
+    "configurations": [
+        
+
+
+        {
+            "type": "firefox",
+            "name": "https://github.com/real-folkblues/mvp.git",
+            "request": "launch",
+            "url": "https://github.com/real-folkblues/mvp.git"
+        }
+    ]
+}

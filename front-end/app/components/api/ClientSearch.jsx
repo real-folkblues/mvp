@@ -8,17 +8,20 @@ import { useState } from 'react';
 
 const ClientSearch = () =>
 {
+    const [errorMessage, setErrorMessage] = useState(null);
     const [ data, setData ] = useState( null );
     //
     const [ kanji, setKanji ] = useState( '' );
     // const [ vocab, setVocab ] = useState( '' );
     // const [ particles, setParticles ] = useState( '' );
 
+
     //searches api kanji, vocab, and particles
     const [ value, setValue ] = useState( '' );
-    const webUrl = "http://localhost:8888/kanjis";
+    const webUrl = "localhost:3000/api/kanjis";
 
     const [isLoading, setIsLoading] = useState(false);
+    
     const handleSubmit = async ( event ) =>
     {
         event.preventDefault();
@@ -52,9 +55,10 @@ const ClientSearch = () =>
         } catch ( error )
         {
             setErrorMessage( error.message );
-            console.error( 'There is (NOT) a match', error );
+            console.error( "There is (NOT) a match", error );
 
         }
+
         setIsLoading(false); //stop loading
     };
 
