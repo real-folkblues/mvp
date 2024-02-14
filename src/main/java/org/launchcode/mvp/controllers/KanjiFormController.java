@@ -1,102 +1,91 @@
 package org.launchcode.mvp.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import jakarta.servlet.http.HttpSession;
 import org.launchcode.mvp.data.KanjiFormRepository;
-
-
 import org.launchcode.mvp.models.KanjiForm;
 import org.launchcode.mvp.models.dto.KanjiDTO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.Optional;
 
-//There may be changes to name of variables, classes, methods, etc. as we further harmonize the project
-@CrossOrigin(origins = "http://localhost:3000")
-@Controller
-@RequestMapping("app/client")
+@RequestMapping
+@RestController
 public class KanjiFormController {
 
-    @Autowired
-    private KanjiFormRepository kanjiFormRepository;
+    // mySQL database
+     private KanjiFormRepository kanjiFormRepository;
 
+     @Autowired
+     private JpaRepository jpaRepository;
 
+    public KanjiFormController(KanjiFormRepository kanjiFormRepository) {
+        this.kanjiFormRepository = kanjiFormRepository;
+    }
 
-
-
-
-    @PostMapping("/")
-    public ResponseEntity<?> processForm(@RequestBody KanjiDTO kanjiDTO, Errors errors, HttpSession session,
-                                         KanjiForm kanjiForm) {
-        kanjiForm = new KanjiForm(KanjiDTO.getKanji());
-
-        //looking up kanji in the db
-        kanjiForm = new kanjiFormRepository(KanjiDTO.getKanji(), KanjiDTO.getKanji());
-
-        System.out.println(kanjiDTO.getKanjiForm);
-
-        if (!kanjiForm.isMatchingKanji()) {
-            errors.rejectValue(
-                    "kanji",
-                    "invalid",
-                    "Try again."
-            );
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    @PostMapping("/app/client")
+    public ResponseEntity<?> submitForm(@RequestBody KanjiDTO kanjiDTO, Errors errors, HttpSession session) {
+        if (errors.hasErrors()) {
+            return ResponseEntity.badRequest().body("Validation errors occurred");
         }
-        //otherwise, set user in session
-        session.setAttribute("user", kanjiForm);
-
-        System.out.println(session.getId());
 
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Kanji-ID", kanjiForm.getKanji());
+        // Converting from DTO to entity
+        KanjiForm kanjiForm = new KanjiForm();
+        kanjiForm.setKanji(kanjiDTO.getKanji());
 
 
-        return new ResponseEntity<>(kanjiForm, HttpStatus.OK);
+        // Saved KanjiForm entity to the database
+        kanjiFormRepository.save(kanjiForm);
+
+        //session attributes
+        session.setAttribute("kanjiFormId", kanjiForm.getId());
+
+        // return status message
+        return ResponseEntity.ok().body("Form submitted successfully");
     }
-
-    }
-
-//    @GetMapping("/getKanjiForm")
-//    public ResponseEntity<?> getKanjiFormObjects() {
 //
+//    @PutMapping("/updateKanjiForm/{id}")
+//    public ResponseEntity<?> updateKanjiForm(@PathVariable long id, @RequestBody KanjiDTO kanjiDTO) {
+//
+//        Optional<KanjiForm> kanjiFormOptional = kanjiFormRepository.findById(id);
+//        if (!kanjiFormOptional.isPresent()) {
+//            return ResponseEntity.notFound().build();
+//        }
+//
+//
+//        KanjiForm kanjiForm = kanjiFormOptional.get();
+//        kanjiForm.setKanji(kanjiDTO.getKanji());
+//
+//
+//
+//        kanjiFormRepository.save(kanjiForm);
+//
+//
+//        return ResponseEntity.ok().body("KanjiForm updated successfully");
 //    }
-
-    @CrossOrigin
-    @DeleteMapping("/removeKanjiForm/{id}")
-    public ResponseEntity<?> removekanjiForm(@PathVariable int id){
-        Optional<kanjiForm> removekanjiForm = kanjiFormRepository.findById(id);
-
-        if(removeKanjiForm.isPresent()){
-            System.out.println("kanjiForm is present");
-            KanjiFormRepository.delete(removekanjiForm.get());
-        }
-        return new ResponseEntity<>(KanjiFormRepository.findAll(), HttpStatus.OK);
-    }
-
-    @PutMapping("/updateKanjiForm/{id}")
-    public ResponseEntity<?> updateKanjiForm(@PathVariable int id, @RequestBody KanjiDTO KanjiDTO){
-
-        Optional<kanjiForm> updateKanjiForm = KanjiFormRepository.findById(id);
-
-        if (updateKanjiForm.isPresent()) {
-            updateKanjiForm.get().setKanji(KanjiDTO.getKanji());
-//            updateKanjiForm.get().setVocab(KanjiDTO.getVocab());
-//            updateKanjiForm.get().setParticles(KanjiDTO.getParticles());
-            KanjiFormRepository.save(updateKanjiForm.get());
-        }
-
-        return new ResponseEntity<>(KanjiFormRepository.findAll(), HttpStatus.OK);
-    }
-
+//
+//    @DeleteMapping("/deleteKanjiForm/{id}")
+//    public ResponseEntity<?> deleteKanjiForm(@PathVariable long id) {
+//
+//        Optional<KanjiForm> kanjiFormOptional = kanjiFormRepository.findById(id);
+//        if (!kanjiFormOptional.isPresent()) {
+//            return ResponseEntity.notFound().build();
+//        }
+//
+//        // this is where it actually deletes it in the database
+//        kanjiFormRepository.delete(kanjiFormOptional.get());
+//
+//        // return status message
+//        return ResponseEntity.ok().body("KanjiForm deleted successfully");
+//    }
 
 }
 
