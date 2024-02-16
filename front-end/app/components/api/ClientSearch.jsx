@@ -29,31 +29,32 @@ const ClientSearch = () =>
 
         try
         {
+            const requestBody = {
+                kanji: value,
+                id: 1,
+            }
 
             const res = await fetch( webUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify( { value } ),
+                body: JSON.stringify(requestBody),
             } );
             if ( !res.ok )
             {
-                //
+                //error message
                 throw new Error( 'You will (NOT) post' )
             }
 
             const responseData = await res.json();
             console.log(responseData);
             setData(responseData); //set the data to the response data
-
-
-
+            //reset field            
             setKanji( '' );
             // setVocab( '' );
             // setParticles( '' );
-        } catch ( error )
-        {
+        } catch ( error ){
             setErrorMessage( error.message );
             console.error( "There is (NOT) a match", error );
 

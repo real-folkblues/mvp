@@ -12,7 +12,7 @@ const KanjiResult = () => {
 
   return (
     <div>
-      {data ? JSON.stringify(data) : 'Loading...'}
+      {data ? JSON.stringify(data) : ''}
     </div>
   );
 }

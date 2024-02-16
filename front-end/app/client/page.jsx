@@ -1,5 +1,6 @@
 // app/client/HomePage.js
 'use client'
+
 import React from 'react';
 
 import ClientSearch from '../components/api/ClientSearch.jsx';
