@@ -3,17 +3,21 @@ package org.launchcode.mvp.controllers;
 import org.launchcode.mvp.data.KanjiFormRepository;
 import org.launchcode.mvp.models.KanjiForm;
 import org.launchcode.mvp.models.dto.KanjiDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpSession;
 
 import java.util.Optional;
 
+@Service
 @RestController
+@RequestMapping
 public class KanjiFormController {
 
-
+    @Autowired
     private final KanjiFormRepository kanjiFormRepository;
 
     public KanjiFormController(KanjiFormRepository kanjiFormRepository) {
@@ -47,8 +51,8 @@ public class KanjiFormController {
     @PutMapping("/updateKanjiForm/{id}")
     public ResponseEntity<?> updateKanjiEntry(@PathVariable long id, @RequestBody KanjiDTO kanjiDTO) {
         // Check if the KanjiForm exists
-        Optional<KanjiForm> kanjiFormOptional = kanjiFormRepository.findById(id);
-        if (!kanjiFormOptional.isPresent()) {
+        Optional<KanjiForm> kanjiFormOptional = kanjiFormRepository.findById((int) id);
+        if (kanjiFormOptional.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
 

@@ -1,4 +1,4 @@
-import { fetchData } from './ApiFetch.jsx';
+import { fetchData } from './apiFetch.jsx';
 import { useState } from 'react';
 import { useEffect } from 'react';
 

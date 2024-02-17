@@ -38,7 +38,7 @@
     "app/api/blogs/error.js",
     "app/api/blogs/layout.js",
     "app/api/blogs/route.js",
-    "app/components/api/ClientSearch.jsx",
+    "app/components/Api/clientSearch.jsx",
     "app/global-error.jsx",
     "app/layout.jsx",
     "app/page.jsx",
