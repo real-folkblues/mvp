@@ -3,10 +3,7 @@
 
 import React from 'react';
 import { useState } from 'react';
-import postData from './apiHandlers.jsx';
-import fetchData from './apiHandlers.jsx';
-import putData from './apiHandlers.jsx';
-import updateData from './apiHandlers.jsx';
+
 
 
 
@@ -39,7 +36,7 @@ const ClientSearch = () =>
             }
 
             const res = await fetch( webUrl, {
-                method: 'POST',
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                 },

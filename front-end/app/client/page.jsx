@@ -3,15 +3,14 @@
 
 import React from 'react';
 
-import ClientSearch from '../components/Api/clientSearch.jsx';
-import KanjiResult from '../components/Api/kanjiResult.jsx';
+import KanjiSearch from '../components/Api/handleSubmit.jsx';
+
 
 
 export default function ClientRoute() {
   return (
     <div>
-      <clientSearch />
-      <kanjiResult />
+      <KanjiSearch />
     </div>
   );
 }
