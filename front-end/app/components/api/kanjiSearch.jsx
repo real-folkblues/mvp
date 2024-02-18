@@ -1,15 +1,31 @@
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
+
+const GridEffect = dynamic(() => import('../effects/grid.jsx'), {
+  ssr: false,
+});
 
 const KanjiSearch = () => {
   const [loading, setLoading] = useState(false);
+  const [showAnimation, setShowAnimation] = useState(false);
+  const [data, setData] = useState(null);
+  
   const [kanjiData, setKanjiData] = useState(null);
   const [error, setError] = useState(null);
   const [kanji, setKanji] = useState('猫'); // Initialize kanji state with '猫'
 
   const handleSubmit = async (event) => {
-    event.preventDefault(); // Prevent form from submitting traditionally
+    event.preventDefault();
+    setShowAnimation(true);
+    setTimeout(async () => {
+      const fetchedData = await fetchKanjiDetails(kanji);
+      setData(fetchKanjiDetails);
+      setShowAnimation(false);
+    }, 3000);
+  };
     setLoading(true);
     setError(null);
+  }
     try {
       const response = await fetch(`https://kanjiapi.dev/v1/kanji/${kanji}`);
       if (!response.ok) {
@@ -22,9 +38,10 @@ const KanjiSearch = () => {
     } finally {
       setLoading(false);
     }
-  };
+  
 
   return (
+    
     <div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="kanji">Kanji</label>
@@ -36,6 +53,7 @@ const KanjiSearch = () => {
         />
         <button type="submit">Fetch Kanji</button>
       </form>
+      {showAnimation && <GridEffect />}
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
       {kanjiData && <div>
@@ -53,6 +71,5 @@ const KanjiSearch = () => {
       </div>}
     </div>
   );
-};
 
 export default KanjiSearch;

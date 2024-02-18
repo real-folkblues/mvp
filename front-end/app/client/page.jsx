@@ -3,7 +3,7 @@
 
 import React from 'react';
 
-import KanjiSearch from '../components/Api/handleSubmit.jsx';
+import KanjiSearch from '../components/Api/kanjiSearch.jsx';
 
 
 
