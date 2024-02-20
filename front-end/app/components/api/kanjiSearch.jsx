@@ -19,7 +19,7 @@ const KanjiSearch = () => {
   setError(null);
   try {
     // Correctly construct the endpoint string for fetching kanji details
-    const endpoint = `/api/kanji/${kanji}`;
+    const endpoint = `client/kanji/search?character=${kanji}`;
     const data = await getData(endpoint); // Use getData for fetching details
     setKanjiData(data);
   } catch (error) {

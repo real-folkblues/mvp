@@ -5,7 +5,7 @@ const webUrl = "http://localhost:8080";
 
 
 export async function postData(endpoint = '', data = {}) {
-  const postUrl = 'webUrl' + '/api/kanji/saved';
+  const postUrl = `${webUrl}${endpoint}`;
   try {
   const response = await fetch(postUrl, {
     method: 'POST', 
@@ -44,7 +44,7 @@ export async function getData(endpoint = '') {
 }
 
 export async function updateData(endpoint = '', data = {}) {
-  const putUrl = 'webUrl + /api/kanji/update';
+  const putUrl = `${webUrl}${endpoint}`;
   try {
   const response = await fetch(url, {
     method: 'PUT', 
@@ -66,7 +66,7 @@ export async function updateData(endpoint = '', data = {}) {
 
 
 export async function deleteData(endpoint = '', data = {}) {
-  const delUrl = 'webUrl + /api/kanji/delete';
+  const delUrl = `${webUrl}${endpoint}`;
   try {
   const response = await fetch(delUrl, {
     method: 'DELETE', 
