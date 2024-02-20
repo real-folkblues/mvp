@@ -1,30 +1,33 @@
 import React, { useState, lazy } from 'react';
 import fetchKanjiDetails from '../Api/fetchApi.jsx';
-import styles from '/app/main.module.css';
+import { getData } from '../Api/methodHandler.jsx';
+import { postData } from '../Api/methodHandler.jsx';
+import { updateData } from '../Api/methodHandler.jsx';
+import { deleteData } from '../Api/methodHandler.jsx';
 
   
 const KanjiSearch = () => {
   const [loading, setLoading] = useState(false);
-  const [showAnimation, setShowAnimation] = useState(false);
+  // const [showAnimation, setShowAnimation] = useState(false);
   const [kanjiData, setKanjiData] = useState(null);
   const [error, setError] = useState(null);
   const [kanji, setKanji] = useState('猫'); // Initialize kanji state with '猫'
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    setShowAnimation(true);
-    setLoading(true);
-    setError(null);
-    try {
-      const data = await fetchKanjiDetails(kanji);
-      setKanjiData(data);
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-      setShowAnimation(false);
-    }
-  };
+  event.preventDefault();
+  setLoading(true);
+  setError(null);
+  try {
+    // Correctly construct the endpoint string for fetching kanji details
+    const endpoint = `/api/kanji/${kanji}`;
+    const data = await getData(endpoint); // Use getData for fetching details
+    setKanjiData(data);
+  } catch (error) {
+    setError(error.message);
+  } finally {
+    setLoading(false);
+  }
+};
   
   return (
     
