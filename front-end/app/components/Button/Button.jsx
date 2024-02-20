@@ -13,9 +13,9 @@ const Button = ({ children, onClick }) => {
       <style jsx>{`
         .container {
           display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
+          justify-content: middle;
+          align-items: middle;
+          height: 20vh;
         }
       `}</style>
     <button onClick={onClick}>

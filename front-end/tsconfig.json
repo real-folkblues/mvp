@@ -39,6 +39,7 @@
     "app/api/blogs/layout.js",
     "app/api/blogs/route.js",
     "app/components/Api/clientSearch.jsx",
+    "app/components/Api/kanjiSearch.jsx",
     "app/global-error.jsx",
     "app/layout.jsx",
     "app/page.jsx",

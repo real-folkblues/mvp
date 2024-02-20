@@ -1,6 +1,7 @@
 package org.launchcode.mvp;
 
-import org.launchcode.mvp.data.KanjiFormRepository;
+
+import org.launchcode.mvp.data.KanjiRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,12 +10,11 @@ import org.springframework.context.annotation.Configuration;
 public class DatabaseTestConfiguration {
 
     @Bean
-    public CommandLineRunner testDatabaseConnection(KanjiFormRepository kanjiFormRepository) {
+    public CommandLineRunner testDatabaseConnection(KanjiRepository kanjiRepository) {
         return args -> {
-            // Replace "MyRepository" with your actual repository
-            // Replace "findAll()" with an appropriate method to test the connection
+            
             System.out.println("Testing database connection...");
-            kanjiFormRepository.findAll();
+            kanjiRepository.findAll();
             System.out.println("Successfully connected to the database.");
         };
     }

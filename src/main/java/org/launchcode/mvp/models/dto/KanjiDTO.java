@@ -1,25 +1,23 @@
 package org.launchcode.mvp.models.dto;
-import java.util.ArrayList;
 
 
 public class KanjiDTO {
 
-    private long id; // or Long if you prefer an object
+    private Integer kanji_id;
     private String kanji;
 
     // Constructor
-    public KanjiDTO(long id, String kanji) {
-        this.id = id;
+    public KanjiDTO(String kanji) {
         this.kanji = kanji;
     }
 
     // Getters and Setters
-    public long getId() {
-        return id;
+    public Integer getKanji_id() {
+        return kanji_id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public Integer setKanji_id(Integer kanji_id) {
+        return kanji_id;
     }
 
     public String getKanji() {

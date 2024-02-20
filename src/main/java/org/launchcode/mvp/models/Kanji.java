@@ -30,13 +30,13 @@ public class Kanji {
 //    this.particles = vocab;
     }
 
-//    public Integer getKanji_id() {
-//        return kanji_id;
-//    }
-//
-//    public void setKanji_id(Integer kanji_id) {
-//        this.kanji_id = kanji_id;
-//    }
+    public Integer getKanji_id() {
+        return kanji_id;
+    }
+
+    public void setKanji_id(Integer kanji_id) {
+        this.kanji_id = kanji_id;
+    }
 
     public String getKanji() {
         return kanji;
