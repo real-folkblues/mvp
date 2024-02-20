@@ -1,4 +1,5 @@
-// Example function within your React component
+
+
 const fetchKanjiDetails = async (kanji) => {
   const response = await fetch(`https://kanjiapi.dev/v1/kanji/${kanji}`);
   if (!response.ok) {
@@ -8,3 +9,4 @@ const fetchKanjiDetails = async (kanji) => {
   return data;
 };
 
+export default fetchKanjiDetails;
