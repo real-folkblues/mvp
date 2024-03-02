@@ -1,8 +1,7 @@
 import React from 'react';
+const url = 'http://localhost:8080;'
 
-const url = 'http://localhost:3306;'
-
-export async function handleSave(url = '', data = {}) {
+export const handleSave = async (kanjiData) => {
   try {
     const response = await fetch('url, /japanese-api', { // Change this URL to your actual backend endpoint
       method: 'POST',
@@ -15,13 +14,12 @@ export async function handleSave(url = '', data = {}) {
     if (!response.ok) {
       throw new Error('Failed to save');
     }
-
     console.log("Save successful");
-    alert("Saved!")
+    alert("Saved!");
 
   } catch (error) {
     console.error("Save error: ", error);
-    // Optionally, display an error message to the user
+    alert("Save error");
   }
 };
 
@@ -60,8 +58,8 @@ export async function handleSave(url = '', data = {}) {
 //     }
 //     console.log("Delete successful");
 //   } catch (error) {
-//     console.error("DELETE error: ", error);
+
 //
 // }
-}
+
 

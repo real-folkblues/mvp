@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { handleSave } from "./methodHandler.jsx";
 
 
 const KanjiSearch = () => {
@@ -52,8 +53,12 @@ const KanjiSearch = () => {
       <p>On Readings: {kanjiData.on_readings.join(', ')}</p>
       <p>JLPT Level: N{kanjiData.jlpt}</p>
       <p>Unicode: {kanjiData.unicode}</p>
-
-      <p>Saved!</p>
+{kanjiData && (
+  <div>
+    {/* Kanji data rendering */}
+    <button onClick={() => handleSave(kanjiData)}>Save Kanji</button>
+  </div>
+)}
         {/* Add more data rendering as needed */}
       </div>}
     </div>
