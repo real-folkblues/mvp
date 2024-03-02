@@ -7,29 +7,21 @@ const config: Config = {
     "./app/**/*.{html,js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    screens: {
-      xl: '1440px',
-    },
-    colors: {
-      'pink': '#ff49db',
-    },
-    fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
-    },
     extend: {
-      spacing: {
-        '128': '32rem',
-        '144': '36rem',
+      keyframes: {
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" }
+        }
       },
-      borderRadius: {
-        '4xl': '2rem',
-      }
-    },
-  },
-  plugins: [],
+      animation: {
+        wiggle: "wiggle 200ms ease-in-out"
+    }
+  }
+}
 
-  
+
+ 
 };
 
 

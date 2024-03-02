@@ -12,7 +12,7 @@ public class DatabaseTestConfiguration {
     @Bean
     public CommandLineRunner testDatabaseConnection(KanjiRepository kanjiRepository) {
         return args -> {
-            
+
             System.out.println("Testing database connection...");
             kanjiRepository.findAll();
             System.out.println("Successfully connected to the database.");

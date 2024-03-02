@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 
-const MyComponent = () => {
+
+const KanjiSearch = () => {
   const [loading, setLoading] = useState(false);
   const [kanjiData, setKanjiData] = useState(null);
   const [error, setError] = useState(null);
   const [kanji, setKanji] = useState('猫'); // Initialize kanji state with '猫'
 
+  //GET request
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent form from submitting traditionally
     setLoading(true);
@@ -22,6 +24,7 @@ const MyComponent = () => {
     } finally {
       setLoading(false);
     }
+
   };
 
   return (
@@ -49,10 +52,12 @@ const MyComponent = () => {
       <p>On Readings: {kanjiData.on_readings.join(', ')}</p>
       <p>JLPT Level: N{kanjiData.jlpt}</p>
       <p>Unicode: {kanjiData.unicode}</p>
+
+      <p>Saved!</p>
         {/* Add more data rendering as needed */}
       </div>}
     </div>
   );
 };
 
-export default MyComponent;
+export default KanjiSearch;

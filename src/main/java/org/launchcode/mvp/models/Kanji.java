@@ -46,6 +46,12 @@ public class Kanji {
         this.kanji = kanji;
     }
 
+    public void setKanji_id() {
+    }
+
+    public void setKanji() {
+    }
+
 //    public String getVocab() {
 //        return vocab;
 //    }

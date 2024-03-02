@@ -1,51 +1,35 @@
-import { fetchKanjiDetails} from '../fetchApi.jsx';
+import React from 'react';
 
+const url = 'http://localhost:3306;'
 
+export async function handleSave(url = '', data = {}) {
+  try {
+    const response = await fetch('url, /japanese-api', { // Change this URL to your actual backend endpoint
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(kanjiData),
+    });
 
-// export async function postData(url = '', data = {}) {
-//   try {
-//   const response = await fetch(url, {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(data) // body data type must match "Content-Type" header
-//   });
-//   return response.json();
-//   if (!response.ok) {
-//       throw new Error('Network response was not ok');
-//     }
-//     console.log("GET successful");
-//   } catch (error) {
-//     console.error("GET error: ", error); // parses JSON response into native JavaScript objects
-// }
-// }
-
-export async function getData(url = '', data = {}) {
-
-    try {
-  const response = await fetch(url, {
-    method: 'GET', 
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    // body: JSON.stringify(data) // body data type must match "Content-Type" header
-  });
-  return response.json();
-  if (!response.ok) {
-      throw new Error('Network response was not ok');
+    if (!response.ok) {
+      throw new Error('Failed to save');
     }
-    console.log("GET successful");
+
+    console.log("Save successful");
+    alert("Saved!")
+
   } catch (error) {
-    console.error("GET error: ", error); // parses JSON response into native JavaScript objects
-}
-}
+    console.error("Save error: ", error);
+    // Optionally, display an error message to the user
+  }
+};
 
 // export async function updateData(url = '', data = {}) {
-  
+//
 //   try {
 //   const response = await fetch(url, {
-//     method: 'PUT', 
+//     method: 'PUT',
 //     headers: {
 //       'Content-Type': 'application/json'
 //     },
@@ -57,16 +41,14 @@ export async function getData(url = '', data = {}) {
 //     }
 //     console.log("Put successful");
 //   } catch (error) {
-//     console.error("PUT error: ", error); 
+//     console.error("PUT error: ", error);
 // }
 // }
-
-
-
+//
 // export async function deleteData(url = '', data = {}) {
 //   try {
 //   const response = await fetch(url, {
-//     method: 'DELETE', 
+//     method: 'DELETE',
 //     headers: {
 //       'Content-Type': 'application/json'
 //     },
@@ -79,7 +61,7 @@ export async function getData(url = '', data = {}) {
 //     console.log("Delete successful");
 //   } catch (error) {
 //     console.error("DELETE error: ", error);
- 
+//
 // }
-// }
+}
 
