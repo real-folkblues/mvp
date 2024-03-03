@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 
-@CrossOrigin (origins = "http://localhost:3000")
+@CrossOrigin (origins = "http://localhost:8080")
 @RestController
 public class KanjiController {
 
@@ -21,7 +21,7 @@ public class KanjiController {
     private KanjiRepository kanjiRepository;
 
     @PostMapping("/")
-    public ResponseEntity<?> saveKanji(@RequestBody KanjiDTO kanjiDTO, Errors erros,
+    public ResponseEntity<?> saveKanji(@RequestBody KanjiDTO kanjiDTO, Errors errors,
                                        HttpSession session) {
         //error checking
         if (erros.hasErrors()) {

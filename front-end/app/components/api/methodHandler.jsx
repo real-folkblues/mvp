@@ -3,24 +3,26 @@ const url = 'http://localhost:8080;'
 
 export const handleSave = async (kanjiData) => {
   try {
-    const response = await fetch('url, /japanese-api', { // Change this URL to your actual backend endpoint
+    const response = await fetch(url, { // Change this URL to your actual backend endpoint
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(kanjiData),
-    });
-
+      body: JSON.stringify({kanjiData})
+    })
+    })
+.then(response => {
     if (!response.ok) {
       throw new Error('Failed to save');
     }
-    console.log("Save successful");
-    alert("Saved!");
-
-  } catch (error) {
-    console.error("Save error: ", error);
-    alert("Save error");
-  }
+    return response.json();
+   })
+   .then(data => {
+     console.log(data);
+   })
+   .catch(error => {
+     console.error('There has been a problem with your fetch operation:', error);
+   });
 };
 
 // export async function updateData(url = '', data = {}) {
