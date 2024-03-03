@@ -1,69 +1,57 @@
 package org.launchcode.mvp.controllers;
 
+import jakarta.servlet.http.HttpSession;
 import org.launchcode.mvp.data.KanjiRepository;
 import org.launchcode.mvp.models.Kanji;
 import org.launchcode.mvp.models.dto.KanjiDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Optional;
 
 
-
-@CrossOrigin
+@CrossOrigin (origins = "http://localhost:3000")
 @RestController
 public class KanjiController {
 
     @Autowired
-    private final KanjiRepository kanjiRepository;
+    private KanjiRepository kanjiRepository;
 
-    public KanjiController(KanjiRepository kanjiRepository) {
-        this.kanjiRepository = kanjiRepository;
-    }
-
-    @PostMapping("api/saveKanji")
-    public ResponseEntity<String> createKanji(@RequestBody KanjiDTO kanjiDTO) {
+    @PostMapping("/")
+    public ResponseEntity<?> saveKanji(@RequestBody KanjiDTO kanjiDTO, Errors erros,
+                                       HttpSession session) {
         //error checking
-        if (errors.hasErrors()) {
+        if (erros.hasErrors()) {
             //returns a bad request
+
             return ResponseEntity.badRequest().body("Validation errors occurred");
         }
+
+
         // Turns KanjiDTO to Kanji entity
-        Kanji kanji;
-        kanji = new Kanji();
-        kanji.setKanji(kanjiDTO.getKanji());
-
-
+        Kanji savedKanji = new Kanji(kanjiDTO.getKanji());
         //saves entity to the database
-        kanjiRepository.save(kanji);
-
-        //set attributes for session
-        session.setAttribute("kanjiId", kanji.getKanji());
+        kanjiRepository.save(savedKanji);
 
         //return response entity with applicable status
-        return ResponseEntity.ok().body(" submitted successfully");
+        return new ResponseEntity<>(kanjiDTO, HttpStatus.OK);
     }
+
+//   @PutMapping("/updateKanji/{id}")
+//   public ResponseEntity<?> updateKanji(@PathVariable long id, @RequestBody KanjiDTO kanjiDTO) {
+//       // Check if the Kanji exists
 //
-//    @PutMapping("/updateKanji/{id}")
-//    public ResponseEntity<?> updateKanjiEntry(@PathVariable long id, @RequestBody KanjiDTO kanjiDTO) {
-//        // Check if the Kanji exists
-//        Optional<Kanji> kanjiOptional = kanjiRepository.findById((int) id);
-//        if (kanjiOptional.isEmpty()) {
-//            return ResponseEntity.notFound().build();
-//        }
+//     String kanji = kanjiDTO.getKanji();
+//       Optional<Kanji> updateKanji = kanjiRepository.findById((int) id);
 //
-//        // Get the existing Kanji and update its fields
-//        Kanji kanji = kanjiOptional.get();
-//        kanji.setKanji(kanjiDTO.getKanji());
-//        // Update other fields as necessary
-//
-//        // Save the updated Kanji
-//        kanjiRepository.save(kanji);
-//
-//        // Return a response entity
-//        return ResponseEntity.ok().body("Kanji updated successfully");
-//    }
+//       if (updateKanji.isPresent()) {
+//           updateKanji.get().setKanji(kanjiDTO.getKanji());
+//           kanjiRepository.save(updateKanji.get());
+//       }
+//       return new ResponseEntity<>(kanjiRepository.findByKanji(kanji),HttpStatus.OK);
+//   }
 
 }
