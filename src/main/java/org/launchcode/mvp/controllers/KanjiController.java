@@ -21,4 +21,6 @@ public class KanjiController {
         Kanji savedKanji = kanjiRepository.save(kanjiData);
         return ResponseEntity.ok(savedKanji);
     }
+
+
 }

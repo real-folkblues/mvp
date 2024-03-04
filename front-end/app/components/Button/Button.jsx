@@ -2,22 +2,23 @@ import React from 'react';
 
 
 const Button = ({ children, onClick }) => {
-  const mystyle = {
-      color: "white",
-      backgroundColor: "DodgerBlue",
-      padding: "10px",
-      fontFamily: "Arial"
-  };
+  // const mystyle = {
+  //     color: "white",
+  //     backgroundColor: "DodgerBlue",
+  //     padding: "1px",
+  //     fontFamily: "Arial"
+  
   return (
     <div className='container'>
-      <style jsx>{`
+      {/* <style jsx>{`
         .container {
           display: flex;
           justify-content: middle;
           align-items: middle;
-          height: 20vh;
+          height: 12vh;
         }
-      `}</style>
+      `}</style> */}
+      
     <button onClick={onClick}>
       {children}
     </button>

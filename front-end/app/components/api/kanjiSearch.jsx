@@ -59,6 +59,9 @@ const KanjiSearch = () => {
   <div>
     {/* Kanji data rendering */}
     <button onClick={() => handleSave(kanjiData, setKanjiData, setError)}>Save Kanji</button>
+    {loading && <p>Loading...</p>}
+      {error && <p>Error: {error}</p>}
+      
   </div>
 )}
         {/* Add more data rendering as needed */}

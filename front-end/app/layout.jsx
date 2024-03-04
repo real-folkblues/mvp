@@ -1,4 +1,8 @@
 import { Inter } from 'next/font/google'
+import './globals.css'
+import Header from './components/NavBarCustom'
+import NavBarCustom from './components/NavBarCustom'
+
 
 // import Header from './components/NavBar'
 
