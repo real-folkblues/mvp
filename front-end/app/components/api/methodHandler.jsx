@@ -1,30 +1,24 @@
 import React from 'react';
-const url = 'http://localhost:8080;'
+const url = 'http://localhost:8080/api/saveKanji'
 
-export const handleSave = async (kanjiData) => {
+export const handleSave = async (kanjiData, setKanjiData, setError) => {
   try {
-    const response = await fetch(url, { // Change this URL to your actual backend endpoint
+    const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({kanjiData})
-    })
-    })
-.then(response => {
+      body: JSON.stringify(kanjiData) // Directly stringify kanjiData
+    });
     if (!response.ok) {
-      throw new Error('Failed to save');
+        throw new Error('Failed to save');
     }
-    return response.json();
-   })
-   .then(data => {
-     console.log(data);
-   })
-   .catch(error => {
-     console.error('There has been a problem with your fetch operation:', error);
-   });
+    const data = await response.json();
+    setKanjiData(data); // Assuming you want to update your state with the response
+  } catch (error) {
+    setError(error.message); // Assuming setError updates your component's state
+  }
 };
-
 // export async function updateData(url = '', data = {}) {
 //
 //   try {
@@ -62,6 +56,6 @@ export const handleSave = async (kanjiData) => {
 //   } catch (error) {
 
 //
-// }
+
 
 

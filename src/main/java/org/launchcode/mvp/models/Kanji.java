@@ -19,7 +19,6 @@ public class Kanji {
 
     private String kanji;
     private Integer grade;
-    private String heisigEn;
     private Integer jlpt;
     private Integer strokeCount;
     private String unicode;
@@ -33,22 +32,28 @@ public class Kanji {
     @CollectionTable(name = "kanji_meanings") // Table for meanings
     @Column(name = "meaning")
     private List<String> meanings = new ArrayList<>();
+
+    @ElementCollection
+    @CollectionTable(name = "kanji_on_readings") // Table for kun_readings
+    @Column(name = "reading")
+    private List<String> onReadings = new ArrayList<>();
     // Constructors, getters, and setters
 
+    public Kanji() {
 
-    public Kanji(Long id, String kanji, Integer grade, String heisigEn, Integer jlpt, Integer strokeCount, String unicode, List<String> kunReadings, List<String> meanings) {
-        this.id = id;
+    }
+
+    public Kanji(String kanji, Integer grade, Integer jlpt, Integer strokeCount, String unicode, List<String> kunReadings, List<String> meanings) {
         this.kanji = kanji;
         this.grade = grade;
-        this.heisigEn = heisigEn;
         this.jlpt = jlpt;
         this.strokeCount = strokeCount;
         this.unicode = unicode;
-        this.kunReadings = kunReadings;
-        this.meanings = meanings;
-
-
+        this.onReadings = new ArrayList<>(onReadings);
+        this.kunReadings = new ArrayList<>(kunReadings);
+        this.meanings = new ArrayList<>(meanings);
     }
+
 
     public Long getId() {
         return id;
@@ -74,14 +79,6 @@ public class Kanji {
         this.grade = grade;
     }
 
-    public String getHeisigEn() {
-        return heisigEn;
-    }
-
-    public void setHeisigEn(String heisigEn) {
-        this.heisigEn = heisigEn;
-    }
-
     public Integer getJlpt() {
         return jlpt;
     }
@@ -104,6 +101,14 @@ public class Kanji {
 
     public void setUnicode(String unicode) {
         this.unicode = unicode;
+    }
+
+    public List<String> getOnReadings() {
+        return onReadings;
+    }
+
+    public void setOnReadings(List<String> onReadings) {
+        this.onReadings = onReadings;
     }
 
     public List<String> getKunReadings() {

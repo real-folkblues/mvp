@@ -6,7 +6,8 @@ const KanjiSearch = () => {
   const [loading, setLoading] = useState(false);
   const [kanjiData, setKanjiData] = useState(null);
   const [error, setError] = useState(null);
-  const [kanji, setKanji] = useState('猫'); // Initialize kanji state with '猫'
+  const [kanji, setKanji] = useState('猫');
+  
 
   //GET request
   const handleSubmit = async (event) => {
@@ -56,7 +57,7 @@ const KanjiSearch = () => {
 {kanjiData && (
   <div>
     {/* Kanji data rendering */}
-    <button onClick={() => handleSave(kanjiData)}>Save Kanji</button>
+    <button onClick={() => handleSave(kanjiData, setKanjiData, setError)}>Save Kanji</button>
   </div>
 )}
         {/* Add more data rendering as needed */}

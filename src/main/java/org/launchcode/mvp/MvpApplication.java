@@ -1,5 +1,6 @@
 package org.launchcode.mvp;
 
+
 import org.launchcode.mvp.data.KanjiRepository;
 import org.launchcode.mvp.models.Kanji;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,12 @@ public class MvpApplication implements CommandLineRunner {
 	private KanjiRepository kanjiRepository;
 
 
+	public MvpApplication(KanjiRepository kanjiRepository) {
+		this.kanjiRepository = kanjiRepository;
+	}
+
 	@Override
 	public void run(String... args) throws Exception {
-		Kanji kanji = new Kanji();
-		kanji.setKanji_id();
-        kanji.setKanji("");
-		kanjiRepository.save(kanji);
+
 	}
 }
