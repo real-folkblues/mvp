@@ -20,7 +20,7 @@ public class Kanji {
     private String kanji;
     private Integer grade;
     private Integer jlpt;
-    private Integer strokeCount;
+    private Integer stroke_count;
     private String unicode;
 
     @ElementCollection
@@ -43,11 +43,12 @@ public class Kanji {
 
     }
 
-    public Kanji(String kanji, Integer grade, Integer jlpt, Integer strokeCount, String unicode, List<String> kunReadings, List<String> meanings) {
+    public Kanji(String kanji, Integer grade, Integer jlpt, Integer stroke_count, String unicode,
+                 List<String> kunReadings, List<String> meanings) {
         this.kanji = kanji;
         this.grade = grade;
         this.jlpt = jlpt;
-        this.strokeCount = strokeCount;
+        this.stroke_count = stroke_count;
         this.unicode = unicode;
         this.onReadings = new ArrayList<>(onReadings);
         this.kunReadings = new ArrayList<>(kunReadings);
@@ -87,12 +88,12 @@ public class Kanji {
         this.jlpt = jlpt;
     }
 
-    public Integer getStrokeCount() {
-        return strokeCount;
+    public Integer getStroke_count() {
+        return stroke_count;
     }
 
-    public void setStrokeCount(Integer strokeCount) {
-        this.strokeCount = strokeCount;
+    public void setStroke_count(Integer stroke_count) {
+        this.stroke_count = stroke_count;
     }
 
     public String getUnicode() {

@@ -14,7 +14,8 @@ export const handleSave = async (kanjiData, setKanjiData, setError) => {
         throw new Error('Failed to save');
     }
     const data = await response.json();
-    setKanjiData(data); // Assuming you want to update your state with the response
+    setKanjiData(data);
+    console.log(kanjiData); // Assuming you want to update your state with the response
   } catch (error) {
     setError(error.message); // Assuming setError updates your component's state
   }

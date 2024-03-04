@@ -50,8 +50,9 @@ const KanjiSearch = () => {
       <p>Grade: {kanjiData.grade}</p>
       <p>Stroke Count: {kanjiData.stroke_count}</p>
       <p>Meanings: {kanjiData.meanings.join(', ')}</p>
-      <p>Kun Readings: {kanjiData.kun_readings.join(', ')}</p>
-      <p>On Readings: {kanjiData.on_readings.join(', ')}</p>
+      <p>Kun Readings: {kanjiData.kun_readings ? kanjiData.kun_readings.join(', ') : 'N/A'}</p>
+      <p>On Readings: {kanjiData.on_readings ? kanjiData.on_readings.join(', ') : 'N/A'}</p>
+
       <p>JLPT Level: N{kanjiData.jlpt}</p>
       <p>Unicode: {kanjiData.unicode}</p>
 {kanjiData && (
