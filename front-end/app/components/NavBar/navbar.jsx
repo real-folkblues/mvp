@@ -1,10 +1,8 @@
 'use client'
 
 import Link from 'next/link';
-import FridgeSearch from './fridge-admin/FridgeSearch';
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import FridgeDisplay from './fridge-admin/FridgeDisplay';
+
 
 const NavBarCustom = () => {
   
