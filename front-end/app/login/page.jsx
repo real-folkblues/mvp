@@ -1,50 +1,22 @@
 'use client'
-
-import Link from 'next/link';
-import React from 'react';
-import
+import React from "react";
+//import dashboard
 
 
 
 
-// `app/page.tsx` is the UI for the `/` URL
-export default function CreateLogin() {
 
-  const logUrl = "http://localhost:8080/login"
+export default function UserDash() {
+//Add dashboard buttons to other routes; Search kanji, logout.
 
- const [password, setPassword] = useState("");
-  const [isPasswordValid, setIsPasswordValid] = useState(false);
-  const [email, setEmail] = useState("");
-  const [isEmailValid, setIsEmailValid] = useState(false)
+//add logic to display user's current kanji
+// add buttons for kanji methods; Update kanji, Delete kanji.
 
-  const handleChangeP = (e) =>
-  {
-    e.preventDefault();
-    setPassword(e.target.value);
-    setIsPasswordValid(e.target.value.length > 6);
-  }
 
-const handleChangeE = (e) =>
-  {
-    e.preventDefault();
-    setEmail(e.target.value);
-    setIsEmailValid(e.target.value.includes("@"));
-  }
-
-  const handleChangeP = (e) =>
-  {
-    e.preventDefault();
-    setPassword(e.target.value);
-    setIsPasswordValid(e.target.value.length > 6);
-  }
-
-const handleChangeE = (e) =>
-  {
-    e.preventDefault();
-    setEmail(e.target.value);
-    setIsEmailValid(e.target.value.includes("@"));
-  }
-
+return (
+    <div>
+      <h2>Hello, username!</h2>
+      
+    </div>
+  );
 }
-
-  

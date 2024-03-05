@@ -1,56 +1,28 @@
-'use client';
-import React from 'react';
+// hooks/useForm.js
+import { useState } from 'react';
 
-export default function LoginForm() {
-    
-    const webUrl = "http://localhost:8080/"
+const url = 'http://localhost:8080/login'
 
-    const handleSubmit = async(event) => {
-        event.preventDefault();
+export const useForm = async (callback) => {
+  const [inputs, setInputs] = useState({});
 
-        const data = {
-            username: event.target.username.value,
-            password: event.target.password.value
-        }
-
-        //console.log(data);
-        await fetch(webUrl, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data),
-        }).then((response) => response.json()).then(data => {
-            console.log(data);
-            //this sends the data to the backend, and then back to the front end to test that it works. 
-        })
+  const handleSubmit = (event) => {
+    if (event) {
+      event.preventDefault();
     }
+    callback(); // Perform your logic here, e.g., making an API call
+  };
 
-    return (
-        <div className= "flex justify-center">
-            <form onSubmit = {handleSubmit}>
-                <h1>Login</h1>
-                <div class="container">
-                <div class="row">
-                    <div class="form-item col-4">
-                        <label>Username</label>
-                        <input type="text" autoComplete="off" id="username" />
-                    </div>
-                </div>
-                </div>
-                <div class="container">
-                <div class="row">
-                    <div class="form-item col-4">
-                        <label>Password</label>
-                        <input type="text" autoComplete="off" id="password" />
-                    </div>
-                </div>
-         </div>
+  const handleInputChange = (event) => {
+    event.persist();
+    setInputs(inputs => ({...inputs, [event.target.name]: event.target.value}));
+  };
 
-                <button type="submit">Login!</button>
-            </form>
-        </div>
-    )
+  return {
+    handleSubmit,
+    handleInputChange,
+    inputs,
+  };
+};
 
 
-}

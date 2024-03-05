@@ -12,14 +12,17 @@ import React from 'react';
 // `app/page.tsx` is the UI for the `/` URL
 export default function Home() {
 
+  const [password, setPassword] = useState("");
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
+  const [email, setEmail] = useState("");
+  const [isEmailValid, setIsEmailValid] = useState(false)
+
+  const login = () => {
+    console.log("Handle login and registration")
+  }
+
+  const {inputs, handleInputChange, handleSubmit} = useForm(login);
   
-
-  const handleClick = () => {
-    console.log("Click happened");
-  };
-
-
-
   return (
     <div className='flex flex-col gap-[10px] bg-[white] p-[15px] rounded-[10px]'>
       <h2>Welcome to the Liftoff Project Demo!</h2>
