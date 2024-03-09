@@ -1,7 +1,7 @@
 // app/client/HomePage.js
 'use client'
 import React from 'react';
-import KanjiSearch from '../components/Api/kanjiSearch.jsx';
+import KanjiSearch from '../pages-components/api/kanjiSearch.jsx';
 
 
 

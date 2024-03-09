@@ -38,12 +38,13 @@
     "app/api/blogs/error.js",
     "app/api/blogs/layout.js",
     "app/api/blogs/route.js",
-    "app/components/Api/clientSearch.jsx",
-    "app/components/Api/kanjiSearch.jsx",
+    "app/pages-components/api/clientSearch.jsx",
+    "app/pages-components/api/kanjiSearch.jsx",
     "app/global-error.jsx",
-    "app/layout.jsx",
-    "app/page.jsx",
-    "app/api/server/page.jsx"
+    "app/layout.tsx",
+    "app/_page.jsx",
+    "app/api/server/page.jsx",
+    "app/pages-components/login-router/Form.tsx"
   ],
   "exclude": [
     "node_modules"
