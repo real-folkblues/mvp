@@ -4,7 +4,7 @@ import './loginFormStyles.css'; // Adjust the path as necessary
 
 import useSession from "./use-session";
 import { defaultSession } from "./lib";
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 
 export function Form() {
   const { session, isLoading } = useSession();
@@ -30,7 +30,8 @@ export function Form() {
 function LoginForm() {
   const { login } = useSession();
   const router = useRouter(); //router hook
- 
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   return (
     
@@ -40,7 +41,7 @@ function LoginForm() {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
         const username = formData.get("username") as string;
-        
+        const password = formData.get("password") as string;
         const result = await login(username); 
         if (result.isLoggedIn) {
           router.push('/user-profile');
