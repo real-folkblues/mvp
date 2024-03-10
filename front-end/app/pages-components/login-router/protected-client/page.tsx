@@ -14,7 +14,7 @@ export default function ProtectedClient() {
             <Content />
             <p>
                 <Link
-                    href="/app-router-client-component-route-handler-swr"
+                    href="/pages-components/login-router/protected-client"
                     className={css.link}
                 >
                     ← Back
@@ -30,7 +30,7 @@ function Content() {
 
     useEffect(() => {
         if (!isLoading && !session.isLoggedIn) {
-            router.replace("/app-router-client-component-route-handler-swr");
+            router.replace("/pages-components/login-router/protected-client");
         }
     }, [isLoading, session.isLoggedIn, router]);
 

@@ -1,9 +1,9 @@
 "use client";
 
-
 import * as css from "@/app/css";
 import useSession from "./use-session";
 import { defaultSession } from "./lib";
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 
 export function Form() {
   const { session, isLoading } = useSession();
@@ -28,19 +28,21 @@ export function Form() {
 
 function LoginForm() {
   const { login } = useSession();
+  const router = useRouter(); //router hook
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   return (
     <form
-      onSubmit={function (event) {
+      onSubmit={async function (event) {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
         const username = formData.get("username") as string;
-        login(username, {
-          optimisticData: {
-            isLoggedIn: true,
-            username,
-          },
-        });
+        const password = formData.get("password") as string;
+        const result = await login(username); 
+        if (result.isLoggedIn) {
+          router.push('/user-profile');
+         } // Redirect on successful login
       }}
       method="POST"
       className={css.form}
@@ -56,7 +58,17 @@ function LoginForm() {
           required
           // for demo purposes, disabling autocomplete 1password here
           autoComplete="off"
-          data-1p-ignore
+          // data-1p-ignore
+        />
+      </label>
+      <label className="block text-lg"> {/* Add this block for password */}
+        <span className={css.label}>Password</span>
+        <input
+          type="password"
+          name="password"
+          className={css.input}
+          required
+          autoComplete="off"
         />
       </label>
       <div>
