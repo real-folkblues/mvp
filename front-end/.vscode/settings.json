@@ -1,4 +1,6 @@
 {"files.associations": {
     "*.css": "tailwindcss",
     "*.scss": "tailwindcss",
-},}
+},
+"liveServer.settings.port": 5501,
+}
