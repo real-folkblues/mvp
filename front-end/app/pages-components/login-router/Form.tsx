@@ -4,26 +4,26 @@ import './loginFormStyles.css'; // Adjust the path as necessary
 
 import useSession from "./use-session";
 import { defaultSession } from "./lib";
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 
 export function Form() {
-  const { session, isLoading } = useSession();
+  // const { session, isLoading } = useSession();
 
-  if (isLoading) {
-    return <p className="text-lg">Loading...</p>;
-  }
+  // if (isLoading) {
+  //   return <p className="text-lg">Loading...</p>;
+  // }
 
-  if (session.isLoggedIn) {
-    return (
-      <>
-        <p className="text-lg">
-          Logged in user: <strong>{session.username}</strong>
-        </p>
-        <LogoutButton />
-      </>
-    );
-  }
+  // if (session.isLoggedIn) {
+  //   return (
+  //     <>
+  //       <p className="text-lg">
+  //         Logged in user: <strong>{session.username}</strong>
+  //       </p>
+  //       <LogoutButton />
+  //     </>
+  //   );
+  // }
 
   return <LoginForm />;
 }
@@ -57,16 +57,16 @@ const LoginForm: React.FC = () => {
           
         </div>
 
-        <div className="remember-forgot">
+        {/* <div className="remember-forgot">
           <label><input type="checkbox" />Remember me</label>
           <a href="#">Forgot password?</a>
-        </div>
+        </div> */}
 
         <button type="submit">Login</button>
 
-        <div className="register-link">
+        {/* <div className="register-link">
           <p>Don't have an account? <a href="#">Register</a></p>
-        </div>
+        </div> */}
       </form>
     </div>
   );
