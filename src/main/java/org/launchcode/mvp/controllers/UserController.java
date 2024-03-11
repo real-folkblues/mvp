@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 //package org.launchcode.mvp.controllers;
 //
 //import org.springframework.web.bind.annotation.RequestMapping;
@@ -149,5 +149,4 @@ public class UserController {
     }
 
     // Additional endpoints like login, delete, update, etc., can be implemented as needed
-
->>>>>>> bd36b1caeacba224549ed25fa5891e5636e5b77f
+bd36b1caeacba224549ed25fa5891e5636e5b77f

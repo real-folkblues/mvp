@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 //package org.launchcode.mvp.data;
 //
 //import org.launchcode.mvp.models.Kanji;
@@ -8,7 +8,7 @@
 //
 //
 //}
-=======
+
 package org.launchcode.mvp.data;
 
 
@@ -20,4 +20,4 @@ public interface JpaRepository extends org.springframework.data.jpa.repository.J
     User findByUser(String username);
 
 }
->>>>>>> bd36b1caeacba224549ed25fa5891e5636e5b77f
+bd36b1caeacba224549ed25fa5891e5636e5b77f
