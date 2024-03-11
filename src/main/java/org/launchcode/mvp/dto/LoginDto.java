@@ -1,7 +1,7 @@
 package org.launchcode.mvp.dto;
 
-public class UserRegistrationDto {
-    private String username;
+public class LoginDto {
+    private String username; // Changed from email to username
     private String password;
 
     // Getters and setters
