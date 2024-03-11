@@ -15,52 +15,54 @@ export const handleSave = async (kanjiData, setKanjiData, setError) => {
     }
     const data = await response.json();
     setKanjiData(data);
-    alert("Saved successfully!");
     console.log(kanjiData); // Assuming you want to update your state with the response
   } catch (error) {
     setError(error.message); // Assuming setError updates your component's state
   }
 };
 
-//PUT method
-export const updateData = async (kanjiData, setKanjiData, setError) => {
+// //PUT method
 
-  try {
-  const response = await fetch(url, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data) // body data type must match "Content-Type" header
-  });
-  return response.json();
-  if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    console.log("Put successful");
-  } catch (error) {
-    console.error("PUT error: ", error);
-}
-}
+// const updateUrl = 'http://localhost:8080/updateKanji'
+// export const updateData = async (kanjiData, setKanjiData, setError) => {
 
-export const deleteData = async (kanjiData, setKanjiData, setError) => {
-  try {
-  const response = await fetch(url, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data) // body data type must match "Content-Type" header
-  });
-  return response.json();
-  if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    console.log("Delete successful");
-  } catch (error) {
-console.error("DELETE error: ", error);
-  }
-}
+//   try {
+//   const response = await fetch(updateUrl, {
+//     method: 'PUT',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(kanjiData) // body data type must match "Content-Type" header
+//   });
+//   return response.json();
+//   if (!response.ok) {
+//       throw new Error('Network response was not ok');
+//     }
+//     console.log(kanjiData);
+//   } catch (error) {
+//     console.error("PUT error: ", error);
+// }
+// }
+
+// const deleteUrl = 'http://localhost:8080/deleteKanji'
+// export const deleteData = async (kanjiData, setKanjiData, setError) => {
+//   try {
+//   const response = await fetch(deleteUrlrl, {
+//     method: 'DELETE',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(kanjiData) // body data type must match "Content-Type" header
+//   });
+//   return response.json();
+//   if (!response.ok) {
+//       throw new Error('Network response was not ok');
+//     }
+//     console.log(kanjiData);
+//   } catch (error) {
+// console.error("DELETE error: ", error);
+//   }
+// }
 
 
 

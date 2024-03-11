@@ -1,24 +1,16 @@
 "use client";
 
-import { Title } from "@/app/title";
+
 import useSession from "../use-session";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import * as css from "@/app/css";
-import Link from "next/link";
+
 
 export default function ProtectedClient() {
     return (
         <main className="p-10 space-y-5">
-            <Title subtitle="Protected page" />
-            <Content />
             <p>
-                <Link
-                    href="/pages-components/login-router/protected-client"
-                    className={css.link}
-                >
-                    ← Back
-                </Link>
             </p>
         </main>
     );

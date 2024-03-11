@@ -38,11 +38,12 @@ const LoginForm: React.FC = () => {
     const username = formData.get("username") as string;
     const password = formData.get("password") as string;
     // Assuming login function returns a promise and result has an isLoggedIn property
-    const result = await login(username, password); // Make sure login accepts password as well
+    const result = await login(username); // Make sure login accepts password as well
     if (result.isLoggedIn) {
-      router.push('/user-profile'); // Redirect on successful login
+      router.push('/add-kanji'); // Redirect on successful login
     }
   };
+
 
   return (
     <div className='wrapper'>
