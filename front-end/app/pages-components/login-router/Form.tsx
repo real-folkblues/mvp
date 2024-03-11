@@ -8,22 +8,22 @@ import { useRouter } from 'next/navigation';
 
 
 export function Form() {
-  // const { session, isLoading } = useSession();
+  const { session, isLoading } = useSession();
 
   // if (isLoading) {
   //   return <p className="text-lg">Loading...</p>;
   // }
 
-  // if (session.isLoggedIn) {
-  //   return (
-  //     <>
-  //       <p className="text-lg">
-  //         Logged in user: <strong>{session.username}</strong>
-  //       </p>
-  //       <LogoutButton />
-  //     </>
-  //   );
-  // }
+  if (session.isLoggedIn) {
+    return (
+      <>
+        <p className="text-lg">
+          Logged in user: <strong>{session.username}</strong>
+        </p>
+        <LogoutButton />
+      </>
+    );
+  }
 
   return <LoginForm />;
 }

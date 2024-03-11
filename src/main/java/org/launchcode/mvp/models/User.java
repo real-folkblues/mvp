@@ -1,14 +1,6 @@
 //package org.launchcode.mvp.models;
 //
-//
-//
-//import jakarta.persistence.Column;
-//import jakarta.persistence.Entity;
-//import jakarta.persistence.GeneratedValue;
-//import jakarta.persistence.GenerationType;
-//import jakarta.persistence.Id;
-//import jakarta.persistence.Table;
-//import jakarta.validation.constraints.Email;
+//import jakarta.persistence.*;
 //import jakarta.validation.constraints.NotBlank;
 //import jakarta.validation.constraints.Size;
 //
@@ -20,10 +12,10 @@
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    private Long id;
 //
-//    @NotBlank(message = "Email is required")
-//    @Email(message = "Invalid email")
+//    @NotBlank(message = "Username is required")
+//
 //    @Column(nullable = false, unique = true)
-//    private String email;
+//    private String username;
 //
 //    @NotBlank(message = "Password is required")
 //    @Size(min = 8, message = "Password must be at least 8 characters long")
@@ -34,8 +26,8 @@
 //    }
 //
 //    // Constructor with fields
-//    public User(String email, String password) {
-//        this.email = email;
+//    public User(String username, String password) {
+//        this.username = username;
 //        this.password = password;
 //    }
 //
@@ -48,12 +40,12 @@
 //        this.id = id;
 //    }
 //
-//    public String getEmail() {
-//        return email;
+//    public String getUsername() {
+//        return username;
 //    }
 //
-//    public void setEmail(String email) {
-//        this.email = email;
+//    public void setUsername(String username) {
+//        this.username = username;
 //    }
 //
 //    public String getPassword() {
