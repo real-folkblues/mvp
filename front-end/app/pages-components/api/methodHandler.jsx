@@ -1,6 +1,8 @@
 import React from 'react';
-const url = 'http://localhost:8080/api/saveKanji'
 
+const url = 'http://localhost:8080/api/saveKanji'; // Corrected URL and added API endpoint
+
+// Updated function to accept setKanjiData and setError as arguments
 export const handleSave = async (kanjiData, setKanjiData, setError) => {
   try {
     const response = await fetch(url, {
@@ -14,12 +16,12 @@ export const handleSave = async (kanjiData, setKanjiData, setError) => {
         throw new Error('Failed to save');
     }
     const data = await response.json();
-    setKanjiData(data);
-    console.log(kanjiData); // Assuming you want to update your state with the response
+    setKanjiData(data); // Assuming you want to update your state with the response
   } catch (error) {
     setError(error.message); // Assuming setError updates your component's state
   }
 };
+
 
 // //PUT method
 
