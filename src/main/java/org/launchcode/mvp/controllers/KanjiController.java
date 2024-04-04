@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-
 public class KanjiController {
 
-
+	@Autowired
 	private final KanjiRepository kanjiRepository;
 
 	@Autowired
@@ -26,26 +25,6 @@ public class KanjiController {
 		return ResponseEntity.ok(savedKanji);
 	}
 }
-
-//@PutMapping("/updateKanjiForm/{id}")
-//public ResponseEntity<?> updateKanjiForm( @PathVariable long id, @RequestBody KanjiDTO kanjiDTO) {
-//	// Check if the KanjiForm exists
-//	Optional<KanjiForm> kanjiFormOptional = kanjiFormRepository.findById(id);
-//	if (!kanjiFormOptional.isPresent()) {
-//		return ResponseEntity.notFound().build();
-//	}
-//
-//	// Get the existing KanjiForm and update its fields
-//	KanjiForm kanjiForm = kanjiFormOptional.get();
-//	kanjiForm.setKanji(kanjiDTO.getKanji());
-//	// Update other fields as necessary
-//
-//	// Save the updated KanjiForm
-//	kanjiFormRepository.save(kanjiForm);
-//
-//	// Return a response entity
-//	return ResponseEntity.ok().body("KanjiForm updated successfully");
-//}
 
 
 

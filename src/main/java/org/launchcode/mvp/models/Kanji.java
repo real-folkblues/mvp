@@ -24,19 +24,19 @@ public class Kanji {
     private String unicode;
 
     @ElementCollection
-    @CollectionTable(name = "kanji_kun_readings") // Table for kun_readings
-    @Column(name = "reading")
-    private List<String> kunReadings = new ArrayList<>();
+    @CollectionTable(name = "kun_readings") // Table for kun_readings
+    @Column(name = "kun_readings")
+    private List<String> kun_Readings = new ArrayList<>();
 
     @ElementCollection
-    @CollectionTable(name = "kanji_meanings") // Table for meanings
+    @CollectionTable(name = "meanings") // Table for meanings
     @Column(name = "meaning")
     private List<String> meanings = new ArrayList<>();
 
     @ElementCollection
-    @CollectionTable(name = "kanji_on_readings") // Table for kun_readings
-    @Column(name = "reading")
-    private List<String> onReadings = new ArrayList<>();
+    @CollectionTable(name = "on_readings") // Table for on_readings
+    @Column(name = "on_readings")
+    private List<String> on_Readings = new ArrayList<>();
     // Constructors, getters, and setters
 
     public Kanji() {
@@ -44,14 +44,14 @@ public class Kanji {
     }
 
     public Kanji(String kanji, Integer grade, Integer jlpt, Integer stroke_count, String unicode,
-                 List<String> kunReadings, List<String> meanings) {
+                 List<String> kun_Readings, List<String> on_Readings, List<String> meanings) {
         this.kanji = kanji;
         this.grade = grade;
         this.jlpt = jlpt;
         this.stroke_count = stroke_count;
         this.unicode = unicode;
-        this.onReadings = new ArrayList<>(onReadings);
-        this.kunReadings = new ArrayList<>(kunReadings);
+        this.kun_Readings = new ArrayList<>(kun_Readings);
+        this.on_Readings = new ArrayList<>(on_Readings);
         this.meanings = new ArrayList<>(meanings);
     }
 
@@ -104,20 +104,20 @@ public class Kanji {
         this.unicode = unicode;
     }
 
-    public List<String> getOnReadings() {
-        return onReadings;
+    public List<String> getOn_Readings() {
+        return on_Readings;
     }
 
-    public void setOnReadings(List<String> onReadings) {
-        this.onReadings = onReadings;
+    public void setOn_Readings(List<String> on_Readings) {
+        this.on_Readings = on_Readings;
     }
 
-    public List<String> getKunReadings() {
-        return kunReadings;
+    public List<String> getKun_Readings() {
+        return kun_Readings;
     }
 
-    public void setKunReadings(List<String> kunReadings) {
-        this.kunReadings = kunReadings;
+    public void set_KunReadings(List<String> kun_Readings) {
+        this.kun_Readings = kun_Readings;
     }
 
     public List<String> getMeanings() {

@@ -17,6 +17,7 @@ const config: Config = {
       animation: {
         wiggle: "wiggle 200ms ease-in-out"
     }
+    
   }
 }
 

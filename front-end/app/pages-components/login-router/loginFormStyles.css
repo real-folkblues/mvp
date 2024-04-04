@@ -5,17 +5,18 @@
     border: 2px solid rgba(255, 255, 255, .2);
     backdrop-filter: blur(30px);
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-    color: #fff;
+    color: #800040;
     border-radius: 10px;
     padding: 30px 40px;
-    margin: auto; /* Center the wrapper */
+    margin: center;
     margin-top: 50px; /* Adjust as needed */
 }
 
 .wrapper h1 {
-    font-size: 36px;
+    font-size: 50px;
     text-align: center;
 }
+
 
 .wrapper .input-box {
     position: relative;
@@ -24,21 +25,23 @@
     margin: 30px 0;
 }
 
+
+
 .input-box input {
     width: 100%;
     height: 100%;
-    background: transparent;
+    background-color: #8080c0;
     border: none;
     outline: none;
     border: 2px solid rgba(255, 255, 255, .2);
-    border-radius: 40px;
+    border-radius: 20px;
     font-size: 16px;
-    color: #fff;
-    padding: 20px 45px 20px 20px;
+    color: #000000;
+    padding: 5px 30px 5px 20px;
 }
 
 .input-box input::placeholder {
-    color: #fff;
+    color: #ff80ff;
 }
 
 /* Additional styles from the template */
