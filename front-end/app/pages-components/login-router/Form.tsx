@@ -50,6 +50,7 @@ const LoginForm: React.FC = () => {
       <form onSubmit={handleSubmit} method="POST">
         <h1>Login</h1>
         <div className="input-box">
+          
           <input name="username" type="text" placeholder='Username' required />
           
         </div>
