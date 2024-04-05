@@ -1,5 +1,6 @@
 h1 {
     text-align: center;
+    
 }
 
 
@@ -10,5 +11,8 @@ form {
 
 .input-box {
     width: 100px;
-    
+    margin: 0 auto;
+    /* Centers the input box */
+    display: block;
 }
+

@@ -1,5 +1,5 @@
 
-import { Form } from "./pages-components/login-router/Form";
+import { Form } from "./pages-components/login-router/Form.tsx";
 import './pages-components/login-router/loginFormStyles.css'; 
 
 
