@@ -1,3 +1,23 @@
+<<<<<<< HEAD
+h1 {
+    text-align: center;
+    
+}
+
+
+
+form {
+    text-align: center;
+}
+
+.input-box {
+    width: 100px;
+    margin: 0 auto;
+    /* Centers the input box */
+    display: block;
+}
+
+=======
 /* loginFormStyles.css */
 .wrapper {
     width: 420px;
@@ -97,3 +117,4 @@
 .register-link p a:hover {
     text-decoration: underline;
 }
+>>>>>>> Test

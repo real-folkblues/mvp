@@ -127,4 +127,8 @@ public class Kanji {
     public void setMeanings(List<String> meanings) {
         this.meanings = meanings;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> bd36b1caeacba224549ed25fa5891e5636e5b77f

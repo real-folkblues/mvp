@@ -5,7 +5,7 @@
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
-
+/*
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -99,7 +99,7 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
+} */
 
 @media (prefers-color-scheme: dark) {
   html {
@@ -108,18 +108,18 @@ a {
 }
 
 body {
-background-color: rgb(206, 222, 227);
+background-color: rgb(70, 103, 112);
 }  
 
 
 /* Add a black background color to the top navigation bar */
-.topnav {
+/* .topnav {
   overflow: hidden;
   background-color: #b6b3b3;
-}
+} */
 
 /* Style the links inside the navigation bar */
-.topnav a {
+/* .topnav a {
   float: left;
   display: block;
   color: black;
@@ -127,28 +127,24 @@ background-color: rgb(206, 222, 227);
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
-}
+} */
 
 /* Change the color of links on hover */
-.topnav a:hover {
+/* .topnav a:hover {
   background-color: #ddd;
   color: black;
 }
 
 /* Style the "active" element to highlight the current page */
-.topnav a.active {
+/* .topnav a.active {
   background-color: #2196F3;
   color: black;
-}
+} */
 
 /* Style the search box inside the navigation bar */
-.topnav button[type=submit]{
+/* .topnav button[type=submit]{
   float: right;
   padding: 6px;
   margin-right: 16px;
   margin-top: 8px;
-}
-
-
-
-
+} */
