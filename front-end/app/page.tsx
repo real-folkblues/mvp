@@ -11,10 +11,8 @@ export default function AppRouterSWR() {
         <div className="space-y-2">
           <hr />
           
-          {/* convert the following paragraphs into a ul li */}
-          <ul className="list-disc list-inside">
-            
-          </ul>
+          
+          
         </div>
       </div>
     
