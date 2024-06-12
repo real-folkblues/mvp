@@ -2,12 +2,11 @@ import useSWR from "swr";
 import { SessionData, defaultSession } from "./lib";
 import useSWRMutation from "swr/mutation";
 
-const sessionApiRoute =
-  "/session";
+const sessionApiRoute = "/session";
 
 async function fetchJson<JSON = unknown>(
   input: RequestInfo,
-  init?: RequestInit,
+  init?: RequestInit
 ): Promise<JSON> {
   return fetch(input, {
     headers: {
@@ -37,7 +36,7 @@ export default function useSession() {
     fetchJson<SessionData>,
     {
       fallbackData: defaultSession,
-    },
+    }
   );
 
   const { trigger: login } = useSWRMutation(sessionApiRoute, doLogin, {
