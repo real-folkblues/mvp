@@ -1,72 +1,56 @@
-export default function UserProfilePage() {
+import { Title } from "@/app/title";
+import useSession from "@/pages-components/pages-router-api-route-swr/use-session";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import * as css from "@/app/css";
+import Link from "next/link";
+
+export default function ProtectedClient() {
   return (
-    <main>
-      <div>
-        <h1>
-          <div class="flex items-center gap-2">
-            <div class="text-2xl">
-              <span class="hidden dark:inline">🌝</span>
-              <span class="dark:hidden">🛠</span>
-              <a
-                class="text-indigo-500 dark:text-indigo-400 underline hover:no-underline"
-                href="/"
-              >
-                iron-session
-              </a>
-              <span class="text-slate-700 dark:text-slate-300">
-                examples: App router
-              </span>
-            </div>
-
-            <span class="text-slate-300 dark:text-slate-700 text-xl"> | </span>
-            <div>
-              <div class="flex items-center gap-2 text-md">
-                <a
-                  href="https://github.com/vvo/iron-session"
-                  target="_blank"
-                  class="text-slate-700 dark:text-slate-300 underline hover:no-underline"
-                >
-                  vvo/iron-session
-                </a>
-              </div>
-            </div>
-          </div>
-        </h1>
-        <h2 class="text-lg text-slate-500 dark:text-slate-400">
-          Protected Page
-        </h2>
-      </div>
-
-      <div class="max-w-xl space-y-2">
-        <p>
-          Hello <strong>Alison!</strong>
-        </p>
-        <p>
-          This page is protected and can only be accessed if you are logged in.
-          Otherwise you will be redirected to the login page.
-        </p>
-        <p>The check is done via a fetch call on the client using SWR.</p>
-        <p>
-          One benefit of using
-          <a
-            href="https://swr.vercel.app"
-            target="_blank"
-            class="text-indigo-500 dark:text-indigo-400 underline hover:no-underline"
-          >
-            SWR
-          </a>
-          : if you open the page in different tabs/windows, and logout from one
-          place, every other tab/window will be synced and logged out.
-        </p>
-      </div>
+    <main className="p-10 space-y-5">
+      <Title subtitle="Protected page" />
+      <Content />
       <p>
-        <a
-          class="text-indigo-500 dark:text-indigo-400 underline hover:no-underline"
-          href="/app-router-client-component-route-handler-swr"
-        >
+        <Link href="/pages-router-api-route-swr" className={css.link}>
           ← Back
-        </a>
+        </Link>
       </p>
     </main>
+  );
+}
+
+function Content() {
+  const { session, isLoading } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!isLoading && !session.isLoggedIn) {
+      router.replace("/user-profile");
+    }
+  }, [isLoading, session.isLoggedIn, router]);
+
+  if (isLoading) {
+    return <p className="text-lg">Loading...</p>;
+  }
+
+  return (
+    <div className="max-w-xl space-y-2">
+      <p>
+        Hello <strong>{session.username}!</strong>
+      </p>
+      <p>
+        This page is protected and can only be accessed if you are logged in.
+        Otherwise you will be redirected to the login page.
+      </p>
+      <p>The check is done via a fetch call on the client using SWR.</p>
+      <p>
+        One benefit of using{" "}
+        <a href="https://swr.vercel.app" target="_blank" className={css.link}>
+          SWR
+        </a>
+        : if you open the page in different tabs/windows, and logout from one
+        place, every other tab/window will be synced and logged out.
+      </p>
+    </div>
   );
 }
